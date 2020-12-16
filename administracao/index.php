@@ -1,4 +1,5 @@
 <?php 
+var_dump("oi");
 require_once("../conexao.php");
 @session_start();
 if(@$_SESSION['nivel_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Administrador'){
