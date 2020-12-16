@@ -17,6 +17,6 @@ $banco = 'maingue_oficina';
 $host = 'localhost';
 $usuario = 'root';
 $senha = '';
-$banco = 'oficina';
+$banco = 'recursos_humanos';
 
  ?>

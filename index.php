@@ -1,12 +1,15 @@
 <?php 
 require_once("conexao.php");
 
-$query = $pdo->query("SELECT * FROM usuarios where nivel = 'Administrador'");
-$res = $query->fetchAll(PDO::FETCH_ASSOC);
-$total_registo = @count($res);
-    if ($total_registo == 0){
-        $res = $pdo->query("INSERT INTO usuarios SET nome = 'Administrador', nif = '0000000', email = '$email_adm', senha = '123', nivel = 'Administrador'");
-    }
+if(!(is_null($conn))){
+    $query = $pdo->query("SELECT * FROM usuarios where nivel = 'Administrador'");
+    $res = $query->fetchAll(PDO::FETCH_ASSOC);
+    $total_registo = @count($res);
+        if ($total_registo == 0){
+            $res = $pdo->query("INSERT INTO usuarios SET nome = 'Administrador', nif = '0000000', email = '$email_adm', senha = '123', nivel = 'Administrador'");
+        }
+}
+
  ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
