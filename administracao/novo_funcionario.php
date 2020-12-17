@@ -1,11 +1,11 @@
 <?php
 
 @session_start();
-if(@$_SESSION['nivel_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Administrador'){
-	echo "<script language='javascript'> window.location='../index.php' </script>";
+if(!isset($_SESSION['nome_usuario']) || $_SESSION['cargo_usuario'] != 'Administrador'){
+    header("location:../index.php");
 }
 
-$pag = "novo_funcionario";
+$pagina = "novo_funcionario";
 require_once("../conexao.php");
 
 if (@$_GET['funcao'] == 'editar') {
@@ -48,7 +48,7 @@ if (@$_GET['funcao'] == 'editar') {
 	<hr>
 	<div class="row">
 		<div class="col-md-12 mb-2">
-		<!-- 	<form id="form" method="POST"> 
+			<form id="form" method="POST"> 
 
 				<div class="form-group">
 					<label >Nome</label>
@@ -109,9 +109,9 @@ if (@$_GET['funcao'] == 'editar') {
 				<a href="index.php?pag=funcionarios" type="button" id="btn-fechar" class="btn btn-danger btn-icon"><i class="fa fa-times"></i>Sair</a>
 				<button type="submit" name="btn-salvar" id="btn-salvar" class="btn btn-success btn-icon"><i class="fa fa-floppy-o "></i>Salvar</button>
 
-			</form>  -->
+			</form> 
 
-			<form id="form" method="POST">
+		<!--	<form id="form" method="POST">
 				<ul class="nav nav-tabs nav-justified mb-4" id="myTab2" role="tablist">
 					<li class="nav-item">
 						<a class="nav-link active" id="home-tab1" data-toggle="tab" href="#dados_pessoais" role="tab" aria-controls="dados_pessoais" aria-selected="true">Dados Pessoais</a>
@@ -289,7 +289,7 @@ if (@$_GET['funcao'] == 'editar') {
 
 				<a href="index.php?pag=funcionarios" type="button" id="btn-fechar" class="btn btn-danger btn-icon mb-4 mt-4"><i class="fa fa-times"></i>Sair</a>
 				
-			</form>
+			</form>-->
 		</div>
 	</div>
 </div>

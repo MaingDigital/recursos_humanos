@@ -4,7 +4,7 @@ require_once("config.php");
 
 $hora_tempo = 'Europe/Lisbon';
 	date_default_timezone_set($hora_tempo);
-$conn = null; 
+
 try {
 	$pdo = new PDO("mysql:dbname=$banco;host=$host", "$usuario", "$senha");
 

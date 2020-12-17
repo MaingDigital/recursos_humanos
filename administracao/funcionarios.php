@@ -1,11 +1,11 @@
 <?php
  
 @session_start();
-if(@$_SESSION['nivel_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Administrador'){
-    echo "<script language='javascript'> window.location='../index.php' </script>";
+if(!isset($_SESSION['nome_usuario']) || $_SESSION['cargo_usuario'] != 'Administrador'){
+    header("location:../index.php");
 }
 
-$pag = "funcionarios";
+$pagina = 'funcionarios';
 require_once("../conexao.php");
 
 ?>

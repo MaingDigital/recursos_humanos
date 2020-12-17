@@ -17,6 +17,6 @@ $banco = 'maingue_oficina';
 $host = 'localhost';
 $usuario = 'root';
 $senha = '';
-$banco = 'recursos_humanos';
+$banco = 'sysmedical';
 
  ?>

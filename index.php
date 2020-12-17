@@ -1,15 +1,17 @@
 <?php 
 require_once("conexao.php");
+require_once("config.php");
 
-if(!(is_null($conn))){
-    $query = $pdo->query("SELECT * FROM usuarios where nivel = 'Administrador'");
-    $res = $query->fetchAll(PDO::FETCH_ASSOC);
-    $total_registo = @count($res);
-        if ($total_registo == 0){
-            $res = $pdo->query("INSERT INTO usuarios SET nome = 'Administrador', nif = '0000000', email = '$email_adm', senha = '123', nivel = 'Administrador'");
-        }
+//VERIFICAR SE EXISTE REGISTRO NA TABELA USUARIOS E SE NÃO EXISTIR CRIAR
+$senha = '123';
+$senha_cript = md5($senha);
+$res_usuarios = $pdo->query("SELECT * from usuarios");
+$dados_usuarios = $res_usuarios->fetchAll(PDO::FETCH_ASSOC);
+$total_usuarios = count($dados_usuarios);
+
+if($total_usuarios == 0){
+  $res_insert = $pdo->query("INSERT into usuarios (nome, usuario, senha, senha_original, cargo) values ('Administrador', '$email_adm', '$senha_cript', '$senha', 'Administrador')");
 }
-
  ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
@@ -55,7 +57,7 @@ if(!(is_null($conn))){
                                     <div class="form-group">                                      
                                         <label  for="exampleuser1">E-mail</label>
                                         <div class="group-icon">
-                                        <input id="email" name="email" type="email" placeholder="E-mail" class="form-control" required="" autofocus>
+                                        <input id="usuario" name="usuario" type="email" placeholder="E-mail" class="form-control" required="" autofocus>
                                         <span class=" icon-envelope text-muted icon-input"></span>
                                         </div>
                                     </div>
